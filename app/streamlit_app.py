@@ -4,7 +4,7 @@ import os
 from gtts import gTTS
 from utils import LANG_MAP, translate_text, transcribe_audio
 
-st.set_page_config(page_title='Speech-to-Text & Translation App', layout='centered', page_icon='nao-medical.png')
+st.set_page_config(page_title='Speech-to-Text & Translation App', layout='centered', page_icon='app/nao-medical.png')
 
 st.title('Speech-to-Text & Translation App')
 st.write('This app transcribes audio files and translates text to different languages.')
