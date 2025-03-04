@@ -9,8 +9,6 @@ load_dotenv()
 # Set Deepgram API key (Store securely in environment variables)
 DEEPGRAM_API_KEY = os.getenv('DEEPGRAM_API_KEY')
 
-print('DEEP GRAM API KEY', DEEPGRAM_API_KEY)
-
 dg_client = DeepgramClient(DEEPGRAM_API_KEY)
 file = open('app/lang_map.json')
 LANG_MAP = json.load(file)
