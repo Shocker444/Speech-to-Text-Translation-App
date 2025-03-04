@@ -10,7 +10,7 @@ load_dotenv()
 DEEPGRAM_API_KEY = os.getenv('DEEPGRAM_API_KEY')
 
 dg_client = DeepgramClient(DEEPGRAM_API_KEY)
-file = open('lang_map.json')
+file = open('app/lang_map.json')
 LANG_MAP = json.load(file)
 
 
