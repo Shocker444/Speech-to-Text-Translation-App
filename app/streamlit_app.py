@@ -27,14 +27,16 @@ if uploaded_file:
     if st.button("Transcribe", type="primary"):
         try:
             transcription, detected_lang, norm_lang = transcribe_audio(uploaded_file)
+            
+            # Store values in session state
+            st.session_state.transcription = transcription
+            st.session_state.detected_lang = detected_lang
+            st.session_state.norm_lang = norm_lang
+            st.session_state.translated_text = None  # Reset translation when a new transcription is made
+            
         except Exception as e:
             st.error(f"Error during transcription: {e}")
 
-        # Store values in session state
-        st.session_state.transcription = transcription
-        st.session_state.detected_lang = detected_lang
-        st.session_state.norm_lang = norm_lang
-        st.session_state.translated_text = None  # Reset translation when a new transcription is made
 
 # Always display transcription if available (even after a refresh)
 if st.session_state.transcription:
@@ -66,9 +68,12 @@ if st.session_state.translated_text:
 
     # Speak button stays available
     if st.button("Speak"):
-        st.write('Generating Audio...')
-        tts = gTTS(text=st.session_state.translated_text, lang=st.session_state.target_lang)
-        tts.save("translated_audio.mp3")
-        st.audio("translated_audio.mp3", format="audio/mp3")
-        os.remove("translated_audio.mp3")  # Cleanup
-        st.success('Audio generated successfully!')
+        st.write('Generating Audio')
+        filename = get_audio_filename(st.session_state.translated_text, st.session_state.target_lang)
+
+        if not os.path.exists(filename):  # Check if file already exists
+            tts = gTTS(text=st.session_state.translated_text, lang=st.session_state.target_lang)
+            tts.save(filename)  
+
+        st.audio(filename, format="audio/mp3")
+        st.success('Audio generated Succesfully')
