@@ -67,4 +67,8 @@ async def translate_text(text, source_lang, target_lang):
     return translated_text
 
 
+def get_audio_filename(text, lang):
+    """Generate a unique filename for the TTS audio based on text content"""
+    return f"audio_{hashlib.md5((text + lang).encode()).hexdigest()}.mp3"
+
 
