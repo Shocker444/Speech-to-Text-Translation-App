@@ -2,7 +2,7 @@ import streamlit as st
 import asyncio
 import os
 from gtts import gTTS
-from utils import LANG_MAP, translate_text, transcribe_audio
+from utils import LANG_MAP, translate_text, transcribe_audio, get_audio_filename
 
 st.set_page_config(page_title='Speech-to-Text & Translation App', layout='centered', page_icon='app/nao-medical.png')
 
