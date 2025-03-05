@@ -1,23 +1,40 @@
-Streamlit Speech-to-Text & Translation App
+# 🗣️ Speech-to-Text & Translation App
 
-Project Overview
+![Streamlit](https://img.shields.io/badge/Streamlit-App-red) ![Python](https://img.shields.io/badge/Python-3.8%2B-blue) ![Status](https://img.shields.io/badge/Status-Active-success)
 
-This Streamlit application enables users to:
+## 📌 Table of Contents
+- [📖 Overview](#-overview)
+- [🚀 Features](#-features)
+- [📂 Project Structure](#-project-structure)
+- [⚙️ Installation](#%EF%B8%8F-installation)
+- [💻 Usage](#-usage)
+- [🛠️ AI Tools Used](#%EF%B8%8F-ai-tools-used)
+- [🚀 Deployment](#-deployment)
 
-Upload an audio file (mp3, wav, ogg, flac).
+---
 
-Transcribe speech-to-text using an AI-based model.
+## 📖 Overview
+This **Streamlit** application allows users to:
+1. **Upload an audio file** (`mp3`, `wav`, `ogg`, `flac`).
+2. **Transcribe speech-to-text** using an AI-based model.
+3. **Detect the language** of the transcribed text.
+4. **Translate the text** into a user-selected language.
+5. **Convert the translated text into speech (TTS)** for audio playback.
 
-Detect the language of the transcribed text.
+---
 
-Translate the text into a user-selected language.
+## 🚀 Features
+✅ Speech-to-Text Transcription  
+✅ Auto-detect Language  
+✅ Translate Text to Any Language  
+✅ Convert Translated Text to Speech  
+✅ Secure File Upload & Processing  
+✅ Easy-to-use Web Interface (Streamlit)
 
-Convert the translated text into speech (TTS) for audio playback.
+---
 
-Code Structure
-
-The app is structured as follows:
-
+## 📂 Project Structure
+```
 /speech-to-text-app
 │── app.py                # Main Streamlit application
 │── utils.py              # Utility functions (transcription, translation, etc.)
@@ -25,93 +42,58 @@ The app is structured as follows:
 │── nao-medical.png       # Favicon for the app
 │── .gitignore            # Ignore unnecessary files
 └── README.md             # Documentation
+```
 
-app.py (Main Application)
+---
 
-Handles the Streamlit UI, file uploads, session management, and AI integration.
+## ⚙️ Installation
+### 🔹 Prerequisites
+- Python 3.8+
+- Pip installed
 
-Imports & Setup
+### 🔹 Setup
+```bash
+# Clone the repository
+git clone https://github.com/yourusername/speech-to-text-app.git
+cd speech-to-text-app
 
-Imports necessary libraries (streamlit, asyncio, gtts, os).
+# Install dependencies
+pip install -r requirements.txt
+```
 
-Sets page configuration (title, layout, and favicon).
+---
 
-Session State Initialization
+## 💻 Usage
+```bash
+streamlit run app.py
+```
+Then open **http://localhost:8501/** in your browser.
 
-Stores session data (transcription, translated_text, detected_lang, etc.).
+---
 
-File Upload
+## 🛠️ AI Tools Used
+| **Feature**        | **Tool Used**                  |
+| ------------------ | ------------------------------ |
+| **Speech-to-Text** | `Deepgram API` / `Whisper AI`  |
+| **Translation**    | `Google Translate API`         |
+| **Text-to-Speech** | `gTTS (Google Text-to-Speech)` |
 
-Accepts audio files (mp3, wav, ogg, flac).
 
-Transcription
+## 🚀 Deployment
+You can deploy the app on **Streamlit Cloud, Heroku, AWS, or Render**.
 
-Calls transcribe_audio() from utils.py to generate text from speech.
+### 🔹 Deploy on Streamlit Cloud
+```bash
+git push origin main  # Push your code to GitHub
+```
+Then, go to [Streamlit Cloud](https://share.streamlit.io/) and connect your GitHub repository.
 
-Stores the transcribed text in st.session_state.
+### 🔹 Deploy on Render
+1. Create a new **Web Service**.
+2. Set **Build Command**: `pip install -r requirements.txt`
+3. Set **Start Command**: `streamlit run app.py`
 
-Language Selection
+---
 
-User selects a target language for translation.
+🚀 **Happy Cloning!**
 
-Translation
-
-Calls translate_text() from utils.py.
-
-Displays translated text in st.session_state.
-
-Text-to-Speech (TTS)
-
-Uses gTTS to generate an audio file from the translated text.
-
-Plays the translated audio in Streamlit.
-
-utils.py (Utility Functions)
-
-This file contains the AI functionalities used in the app.
-
-transcribe_audio(audio_file)
-
-Uses Deepgram API or Whisper AI to transcribe the uploaded audio.
-
-Returns:
-
-transcription → The converted text.
-
-detected_lang → Language detected in the audio.
-
-norm_lang → Normalized language name.
-
-translate_text(text, source_lang, target_lang)
-
-Uses Google Translate API or another translation model.
-
-Converts text from source_lang to target_lang.
-
-Returns:
-
-translated_text → The translated sentence.
-
-LANG_MAP
-
-A dictionary mapping languages for selection (e.g., {"English": ["en"], "French": ["fr"]}).
-
-AI Tools Used
-
-This app relies on three AI-powered tools:
-
-Feature
-
-Tool Used
-
-Speech-to-Text
-
-Deepgram API / Whisper AI
-
-Translation
-
-Google Translate API
-
-Text-to-Speech
-
-gTTS (Google Text-to-Speech)
