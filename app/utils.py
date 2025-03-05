@@ -1,6 +1,7 @@
 from deepgram import DeepgramClient, FileSource, PrerecordedOptions
 from googletrans import Translator
 import os
+import hashlib
 from dotenv import load_dotenv
 import ast
 import json
